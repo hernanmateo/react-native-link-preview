@@ -34,7 +34,8 @@
     "type-coverage": "type-coverage"
   },
   "dependencies": {
-    "html-entities": "^2.3.2"
+    "html-entities": "^2.3.2",
+    "text-decoding": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

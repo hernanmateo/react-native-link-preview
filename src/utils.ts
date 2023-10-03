@@ -1,5 +1,6 @@
 import { decode } from 'html-entities'
 import { Image } from 'react-native'
+import { TextDecoder } from 'text-decoding'
 
 import { PreviewData, PreviewDataImage, Size } from './types'
 
@@ -107,7 +108,21 @@ export const getPreviewData = async (text: string, requestTimeout = 5000) => {
       return previewData
     }
 
-    const html = await response.text()
+    const _cloneResponse = response.clone()
+    let html = await response.text()
+    // Some pages return undefined
+    if (!html) {
+      try {
+        const arrayBuffer = await _cloneResponse.arrayBuffer()
+        const decoder = new TextDecoder()
+        const text = decoder.decode(arrayBuffer)
+        html = text
+      } catch (error) {
+        return previewData
+      }
+    }
+
+    if (!html) return previewData
 
     // Some pages return undefined
     if (!html) return previewData
