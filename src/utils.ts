@@ -1,10 +1,8 @@
 import { decode } from 'html-entities'
 import { Image } from 'react-native'
+import { TextDecoder } from 'text-decoding'
 
-//import { TextDecoder } from 'text-decoding'
 import { PreviewData, PreviewDataImage, Size } from './types'
-
-const TextDecoder = require('text-decoding')
 
 export const getActualImageUrl = (baseUrl: string, imageUrl?: string) => {
   let actualImageUrl = imageUrl?.trim()
