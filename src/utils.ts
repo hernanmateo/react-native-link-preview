@@ -1,8 +1,10 @@
 import { decode } from 'html-entities'
 import { Image } from 'react-native'
-import { TextDecoder } from 'text-decoding'
 
+//import { TextDecoder } from 'text-decoding'
 import { PreviewData, PreviewDataImage, Size } from './types'
+
+const TextDecoder = require('text-decoding')
 
 export const getActualImageUrl = (baseUrl: string, imageUrl?: string) => {
   let actualImageUrl = imageUrl?.trim()
@@ -115,8 +117,8 @@ export const getPreviewData = async (text: string, requestTimeout = 5000) => {
       try {
         const arrayBuffer = await _cloneResponse.arrayBuffer()
         const decoder = new TextDecoder()
-        const text = decoder.decode(arrayBuffer)
-        html = text
+        const _text = decoder.decode(arrayBuffer)
+        html = _text
       } catch (error) {
         return previewData
       }

@@ -34,6 +34,7 @@
     "type-coverage": "type-coverage"
   },
   "dependencies": {
+    "fast-text-encoding": "^1.0.6",
     "html-entities": "^2.3.2",
     "text-decoding": "^1.0.0"
   },
